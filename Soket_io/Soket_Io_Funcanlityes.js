@@ -6,8 +6,9 @@ import { connect } from "mongoose";
 const Soket_io_Function = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173",
-      // origin: "https://buddy-hub-frontend.onrender.com",
+      // origin: "http://localhost:5173",
+      origin:
+        "https://buddy-hub-backend-85sk7kc4d-pritam-mandals-projects-73e03c4f.vercel.app",
       methods: ["GET", "POST"],
     },
   });
@@ -150,7 +151,7 @@ const Soket_io_Function = (server) => {
     // =============This is for User Send Accept & Cancle Friend Request Start==================
     socket.on("user_friend_request", (data) => {
       console.log(data);
-      
+
       if (allOnlineUser.includes(data.recever_id))
         io.emit("user_friend_request_frontend", data);
     });

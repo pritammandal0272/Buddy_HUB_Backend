@@ -52,13 +52,12 @@ const app = express();
 env.config();
 app.use(express.json());
 app.use(
-  cors(
-    {
+  cors({
     // origin:["https://buddy-hub-frontend.onrender.com"],
-    origin: "http://localhost:5173",
+    origin:
+      "https://buddy-hub-backend-85sk7kc4d-pritam-mandals-projects-73e03c4f.vercel.app",
     methods: ["GET", "POST"],
-  }
-)
+  })
 );
 app.use(passport.initialize());
 
@@ -87,7 +86,9 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", { session: false, failureRedirect: "/" }),
   (req, res) => {
-    res.redirect("http://localhost:5173");
+    res.redirect(
+      "https://buddy-hub-frontend-19edrwrjb-pritam-mandals-projects-73e03c4f.vercel.app"
+    );
   }
 );
 // ============google Passport End==========
